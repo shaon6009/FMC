@@ -1,0 +1,264 @@
+/* ============================================================
+   ATOMIC DESIGN - MOLECULES
+   Combinations of atoms to form simple components
+   ============================================================ */
+
+/* ── FORM GROUP (Input + Label) ────────────────────────– */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group .label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group .input,
+.form-group .select,
+.form-group .textarea {
+  width: 100%;
+}
+
+.form-error {
+  color: var(--color-bg-danger);
+  font-size: 12.5px;
+  margin-top: 5px;
+}
+
+/* ── BUTTON GROUP ──────────────────────────────────────– */
+.button-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.button-group-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.button-group-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* ── CARD MOLECULE ─────────────────────────────────────– */
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 22px;
+  margin-bottom: 18px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.card-body {
+  margin: 0;
+}
+
+.card-footer {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ── STAT CARD ─────────────────────────────────────────– */
+.stat {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+/* ── SEARCH BAR ────────────────────────────────────────– */
+.search-field {
+  position: relative;
+  width: 100%;
+}
+
+.search-field .input {
+  padding-right: 38px;
+}
+
+.search-field::after {
+  content: '🔍';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ── FILTER BAR ────────────────────────────────────────– */
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.filters .input,
+.filters .select {
+  width: auto;
+  padding: 7px 11px;
+  font-size: 13px;
+}
+
+/* ── MENU / DROPDOWN ───────────────────────────────────– */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  min-width: 180px;
+  z-index: 1000;
+  margin-top: 4px;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13.5px;
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+}
+
+.dropdown-item:hover {
+  background-color: var(--gray50);
+  color: var(--primary);
+}
+
+.dropdown-item.active {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+/* ── MODAL HEADER/FOOTER ───────────────────────────────– */
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.modal-body {
+  padding: 20px 24px;
+}
+
+.modal-footer {
+  padding: 14px 24px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* ── BREADCRUMB ────────────────────────────────────────– */
+.breadcrumb {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.breadcrumb a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: var(--color-text-muted);
+}
+
+/* ── PAGINATION ────────────────────────────────────────– */
+.pagination {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.pagination-btn {
+  padding: 6px 10px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 12.5px;
+  transition: var(--transition-fast);
+  color: var(--color-text-secondary);
+}
+
+.pagination-btn:hover {
+  background-color: var(--gray50);
+  border-color: var(--primary);
+}
+
+.pagination-btn.active {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,400 @@
+/* ============================================================
+   ATOMIC DESIGN - ATOMS
+   Basic building blocks for UI components
+   ============================================================ */
+
+/* ── COLOR PALETTE (Semantic) ───────────────────────────── */
+:root {
+  /* Core Colors */
+  --primary:       #1e40af;
+  --primary-dark:  #1e3a8a;
+  --primary-light: #dbeafe;
+  --primary-accent: #3b82f6;
+  
+  /* State Colors */
+  --success:       #16a34a;
+  --warning:       #d97706;
+  --danger:        #dc2626;
+  --info:          #3b82f6;
+  
+  /* Neutral Colors */
+  --gray50:        #f9fafb;
+  --gray100:       #f3f4f6;
+  --gray200:       #e5e7eb;
+  --gray400:       #9ca3af;
+  --gray600:       #4b5563;
+  --gray800:       #1f2937;
+  
+  /* Semantic Mappings */
+  --color-bg-primary:           var(--primary);
+  --color-bg-primary-hover:     var(--primary-dark);
+  --color-bg-secondary:         var(--gray100);
+  --color-bg-secondary-hover:   var(--gray200);
+  --color-bg-success:           var(--success);
+  --color-bg-danger:            var(--danger);
+  --color-bg-warning:           var(--warning);
+  --color-bg-info:              var(--info);
+  
+  --color-text-primary:         #fff;
+  --color-text-secondary:       var(--gray800);
+  --color-text-muted:           var(--gray600);
+  
+  --color-border:               var(--gray200);
+  --color-border-focus:         var(--primary-accent);
+  
+  /* Whitespace & Border Radius */
+  --radius:                     8px;
+  --radius-lg:                  14px;
+  
+  /* Shadows */
+  --shadow-sm:                  0 1px 3px rgba(0,0,0,.1);
+  --shadow-md:                  0 4px 12px rgba(0,0,0,.08);
+  --shadow-lg:                  0 20px 50px rgba(0,0,0,.22);
+  
+  /* Transitions */
+  --transition-fast:            all .15s ease;
+  --transition-smooth:          all .3s ease;
+}
+
+/* ── BUTTON ATOM BASE ──────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: var(--radius);
+  font-size: 13.5px;
+  font-weight: 600;
+  border: none;
+  transition: var(--transition-fast);
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: inherit;
+  outline: none;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ── BUTTON VARIANTS ───────────────────────────────────── */
+
+/* Primary Button (Main action) */
+.btn-primary {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-bg-primary-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Secondary Button (Alternative action) */
+.btn-secondary {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--color-bg-secondary-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Success Button */
+.btn-success {
+  background-color: var(--color-bg-success);
+  color: var(--color-text-primary);
+  border: 1px solid transparent;
+}
+
+.btn-success:hover:not(:disabled) {
+  opacity: 0.88;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-success:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Danger Button */
+.btn-danger {
+  background-color: var(--color-bg-danger);
+  color: var(--color-text-primary);
+  border: 1px solid transparent;
+}
+
+.btn-danger:hover:not(:disabled) {
+  opacity: 0.88;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-danger:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Warning Button */
+.btn-warning {
+  background-color: var(--color-bg-warning);
+  color: var(--color-text-primary);
+  border: 1px solid transparent;
+}
+
+.btn-warning:hover:not(:disabled) {
+  opacity: 0.88;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-warning:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Info Button */
+.btn-info {
+  background-color: var(--color-bg-info);
+  color: var(--color-text-primary);
+  border: 1px solid transparent;
+}
+
+.btn-info:hover:not(:disabled) {
+  opacity: 0.88;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-info:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Outline Button Variant */
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-bg-primary);
+  border: 1.5px solid var(--color-bg-primary);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--primary-light);
+}
+
+/* ── BUTTON SIZES ──────────────────────────────────────── */
+.btn-sm {
+  padding: 5px 11px;
+  font-size: 12.5px;
+}
+
+.btn-lg {
+  padding: 12px 24px;
+  font-size: 15px;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ── INPUT ATOM BASE ───────────────────────────────────── */
+.input {
+  width: 100%;
+  padding: 9px 13px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 13.5px;
+  background-color: #fff;
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  transition: var(--transition-fast);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.input:disabled {
+  background-color: var(--gray50);
+  color: var(--gray400);
+  cursor: not-allowed;
+}
+
+/* Input Sizes */
+.input-sm {
+  padding: 6px 10px;
+  font-size: 12.5px;
+}
+
+.input-lg {
+  padding: 12px 16px;
+  font-size: 14.5px;
+}
+
+/* Textarea */
+.textarea {
+  resize: vertical;
+  min-height: 90px;
+  font-family: inherit;
+}
+
+/* Select */
+.select {
+  width: 100%;
+  padding: 9px 13px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 13.5px;
+  background-color: #fff;
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.select:disabled {
+  background-color: var(--gray50);
+  color: var(--gray400);
+  cursor: not-allowed;
+}
+
+/* ── BADGE ATOM ────────────────────────────────────────– */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-primary {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.badge-success {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.badge-danger {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.badge-warning {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.badge-info {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-gray {
+  background-color: var(--gray100);
+  color: var(--gray800);
+}
+
+/* ── ALERT ATOM ────────────────────────────────────────– */
+.alert {
+  padding: 11px 15px;
+  border-radius: var(--radius);
+  font-size: 13.5px;
+  margin-bottom: 14px;
+  border: 1px solid;
+}
+
+.alert-success {
+  background-color: #dcfce7;
+  color: #166534;
+  border-color: #86efac;
+}
+
+.alert-danger {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+}
+
+.alert-warning {
+  background-color: #fef3c7;
+  color: #92400e;
+  border-color: #f59e0b;
+}
+
+.alert-info {
+  background-color: #dbeafe;
+  color: #1e40af;
+  border-color: #3b82f6;
+}
+
+/* ── TAG ATOM ──────────────────────────────────────────– */
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  margin: 2px;
+}
+
+/* ── LABEL ATOM ────────────────────────────────────────– */
+.label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--color-text-muted);
+}
+
+.label-required::after {
+  content: ' *';
+  color: var(--color-bg-danger);
+}
+
+/* ── TEXT ATOMS ────────────────────────────────────────– */
+.text-primary {
+  color: var(--primary);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.text-warning {
+  color: var(--warning);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-small {
+  font-size: 12px;
+}
+
+.text-bold {
+  font-weight: 600;
+}
