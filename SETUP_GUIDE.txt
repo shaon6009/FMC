@@ -1,0 +1,187 @@
+# FixMyCampus — Complete Setup Guide
+# SE-331 Capstone Project · Daffodil International University
+
+================================================================
+STEP 1 — IMPORT DATABASE IN phpMyAdmin
+================================================================
+
+1. Open phpMyAdmin in your browser: http://localhost/phpmyadmin
+2. Click the "Import" tab at the TOP of the page
+3. Click "Choose File" and select: database/schema.sql
+4. Scroll down and click "Import"
+5. You should see a green success message
+
+✅ This creates the fixmycampus database with all tables.
+
+
+================================================================
+STEP 2 — SET UP SERVER (TERMINAL 1)
+================================================================
+
+Open VS Code, then open the Terminal (press Ctrl + `)
+
+Type these commands ONE AT A TIME, pressing Enter after each:
+
+    cd server
+    npm install
+
+Wait for it to finish (takes 1-2 minutes), then run the seed:
+
+    node seed.js
+
+You should see:
+    ✅ Seed complete!
+    Super Admin  → superadmin@diu.edu.bd  / Admin@1234
+    SE Admin     → se.admin@diu.edu.bd    / Admin@1234
+
+Then start the server:
+
+    npm run dev
+
+You should see:
+    ✅ MySQL connected
+    🚀 FixMyCampus server running at http://localhost:5000
+
+⚠️ KEEP THIS TERMINAL OPEN! Do NOT close it.
+
+
+================================================================
+STEP 3 — START FRONTEND (TERMINAL 2)
+================================================================
+
+Press the "+" button in VS Code terminal to open a NEW terminal.
+
+Type these commands:
+
+    cd client
+    npm install
+
+Wait for it to finish (takes 2-3 minutes), then:
+
+    npm start
+
+A browser tab will automatically open at: http://localhost:3000
+
+⚠️ KEEP THIS TERMINAL OPEN TOO!
+
+
+================================================================
+STEP 4 — CONFIGURE CHATGPT API (OPTIONAL)
+================================================================
+
+To enable the AI Assistant with ChatGPT capabilities:
+
+1. Get an OpenAI API key:
+   - Go to: https://platform.openai.com/api-keys
+   - Sign up or log in with your OpenAI account
+   - Create a new API key
+   - Copy the key (you won't see it again!)
+
+2. Add the key to your server config:
+   - Open: server/.env
+   - Find the line: OPENAI_API_KEY=
+   - Paste your API key: OPENAI_API_KEY=sk-your-key-here
+   - Save the file
+
+3. Restart the server:
+   - Press Ctrl+C in Terminal 1 (where server is running)
+   - Run: npm run dev
+
+✅ The AI Assistant will now use ChatGPT to answer questions about Daffodil University!
+
+
+================================================================
+STEP 5 — IF MYSQL HAS A PASSWORD
+================================================================
+
+If your MySQL has a password:
+1. Open the file: server/.env
+2. Find the line: DB_PASSWORD=
+3. Change it to:  DB_PASSWORD=yourpassword
+4. Save the file and restart the server (Ctrl+C then npm run dev)
+
+
+================================================================
+LOGIN CREDENTIALS
+================================================================
+
+Super Admin:  superadmin@diu.edu.bd  /  Admin@1234
+SE Admin:     se.admin@diu.edu.bd    /  Admin@1234
+
+For students: Register at http://localhost:3000/register
+  - Use a @diu.edu.bd email
+  - The verification code will appear in the SERVER TERMINAL window
+    (Terminal 1 where you ran npm run dev)
+
+
+================================================================
+TROUBLESHOOTING
+================================================================
+
+Problem: "MySQL connection failed"
+Fix: Check DB_PASSWORD in server/.env matches your MySQL password
+
+Problem: "Cannot GET /api/..."
+Fix: Make sure server is running (Terminal 1 shows port 5000)
+
+Problem: Frontend won't load
+Fix: Make sure npm start is running in client folder (Terminal 2)
+
+Problem: Registration doesn't redirect
+Fix: Server isn't running. Check Terminal 1.
+
+Problem: Verification code not received
+Fix: Look in Terminal 1 (server terminal) - the code prints there
+
+Problem: "node_modules not found"
+Fix: Make sure you ran "npm install" in BOTH server AND client folders
+
+
+================================================================
+PROJECT STRUCTURE
+================================================================
+
+fixmycampus/
+├── database/
+│   └── schema.sql          ← Import this in phpMyAdmin
+├── server/                 ← Backend (Node.js + Express)
+│   ├── .env                ← Edit DB_PASSWORD here if needed
+│   ├── seed.js             ← Run once: node seed.js
+│   ├── server.js           ← Main server file
+│   ├── config/db.js        ← Database connection
+│   ├── controllers/        ← Business logic
+│   ├── routes/             ← API endpoints
+│   ├── middleware/         ← Auth & file upload
+│   ├── services/           ← Email, chatbot, cron
+│   └── sockets/            ← Real-time chat
+└── client/                 ← Frontend (React.js)
+    └── src/
+        ├── pages/          ← All screens
+        ├── components/     ← Sidebar, shared parts
+        └── services/api.js ← Connects to backend
+
+
+================================================================
+FEATURES IMPLEMENTED (FR-1 to FR-15)
+================================================================
+
+✅ FR-1  Register with @diu.edu.bd email
+✅ FR-2  Secure JWT login
+✅ FR-3  Automatic ANON-ID generation
+✅ FR-4  Anonymous issue reporting with attachments
+✅ FR-5  Real-time issue tracking with status updates
+✅ FR-6  Anonymous one-to-one chat (Socket.io)
+✅ FR-7  Group discussions (Socket.io)
+✅ FR-8  Comments and reactions (👍👎⚠️❤️)
+✅ FR-9  AI chatbot (rule-based, 24/7)
+✅ FR-10 Admin view all department reports
+✅ FR-11 Update report status
+✅ FR-12 Admin respond to reports
+✅ FR-13 Super Admin create/ban/delete users
+✅ FR-14 AI answers campus questions
+✅ FR-15 AI guides issue reporting
+✅ Auto-closure cron job (7 days)
+✅ 18 DIU departments
+✅ 4 user roles
+✅ File uploads (images & PDF)
+================================================================
